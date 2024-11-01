@@ -3,7 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -37,7 +36,7 @@ public class LottoMachine {
 
     public void buyLotto() {
         int purchaseAmount = getPurchaseAmount();
-        int purchaseQuantity = getPurchaseQuantity(purchaseAmount);
+        int purchaseQuantity = amountToQuantity(purchaseAmount);
         // 로또 구입
         for (int i = 0; i < purchaseQuantity; i++) {
             purchasedLottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_SIZE)));
@@ -53,7 +52,7 @@ public class LottoMachine {
         System.out.println();
     }
 
-    public int getPurchaseQuantity(int purchaseAmount) {
+    public int amountToQuantity(int purchaseAmount) {
         return purchaseAmount / 1000;
     }
 
