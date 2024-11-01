@@ -9,9 +9,10 @@ public class LotteMachine {
     private static final Integer START_INCLUSIVE = 1;
     private static final Integer END_INCLUSIVE = 45;
     private static final Integer LOTTO_SIZE = 6;
-    private ArrayList<Lotto> purchasedLottoTickets = new ArrayList<>();
+    private final ArrayList<Lotto> purchasedLottoTickets = new ArrayList<>();
     public void run() {
         buyLotto();
+        printLottoNumbers();
     }
 
     public void buyLotto() {
@@ -21,6 +22,15 @@ public class LotteMachine {
         for (int i = 0; i < purchaseQuantity; i++) {
             purchasedLottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_SIZE)));
         }
+    }
+
+    public void printLottoNumbers() {
+        System.out.println();
+        System.out.println(purchasedLottoTickets.size() + "개를 구매했습니다.");
+        for (Lotto lotto : purchasedLottoTickets) {
+            lotto.printLottoNumbers();
+        }
+        System.out.println();
     }
 
     public int getPurchaseQuantity(int purchaseAmount) {

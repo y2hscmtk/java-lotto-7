@@ -1,5 +1,9 @@
 package lotto;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -16,5 +20,9 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    // 오름차순 정렬 후 출력
+    public void printLottoNumbers() {
+        Collections.sort(numbers);
+        System.out.println(numbers);
+    }
 }
