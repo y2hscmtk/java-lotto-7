@@ -1,11 +1,9 @@
 package lotto;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.Test;
 
-class LottoMachineTest {
+class VerifierTest {
 
     @Test
     void 로또_구매_금액이_정수가_아니면_예외가_발생_한다() {
