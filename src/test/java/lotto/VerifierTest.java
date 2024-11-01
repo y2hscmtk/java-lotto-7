@@ -39,4 +39,15 @@ class VerifierTest {
         assertThatThrownBy(() -> verifier.validateLottoNumbers("a,b,c"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 문자열에서_추출된_당첨번호중에_범위를_넘어서는_값이_있다면_예외가_발생한다() {
+        Verifier verifier = new Verifier();
+        assertThatThrownBy(() -> verifier.validateLottoNumbers("-1,1,45"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> verifier.validateLottoNumbers("1,2,46"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> verifier.validateLottoNumbers("0,2,45"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
