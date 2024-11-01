@@ -33,4 +33,10 @@ class VerifierTest {
         }
     }
 
+    @Test
+    void 문자열에서_추출된_당첨번호가_정수가_아니라면_예외가_발생한다() {
+        Verifier verifier = new Verifier();
+        assertThatThrownBy(() -> verifier.validateLottoNumbers("a,b,c"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
