@@ -5,15 +5,28 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 
+/**
+ * 1. 구입 금액 입력받기
+ * 2. 로또 구매
+ * 3. 당첨번호 & 보너스 번호 입력받기
+ * 4. 당첨 통계 계산(별도 클래스) 결과 출력
+ */
 public class LotteMachine {
-    private static final Integer START_INCLUSIVE = 1;
-    private static final Integer END_INCLUSIVE = 45;
-    private static final Integer LOTTO_SIZE = 6;
+    public static final Integer START_INCLUSIVE = 1;
+    public static final Integer END_INCLUSIVE = 45;
+    public static final Integer LOTTO_SIZE = 6;
     private final ArrayList<Lotto> purchasedLottoTickets = new ArrayList<>();
     private final Verifier verifier = new Verifier();
     public void run() {
         buyLotto();
         printLottoNumbers();
+    }
+
+    public void getWinningNumbers() {
+        String inputData;
+        do {
+            inputData = Console.readLine();
+        } while (!verifier.isValidWinningNumbers(inputData));
     }
 
     public void buyLotto() {

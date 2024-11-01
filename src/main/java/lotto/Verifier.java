@@ -1,6 +1,14 @@
 package lotto;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Verifier {
+    private static final Integer START_INCLUSIVE = 1;
+    private static final Integer END_INCLUSIVE = 45;
+    private static final Integer LOTTO_SIZE = 6;
+    private Set<Integer> lottoNumbers = new HashSet<>();
+
     // 입력값이 올바른 구매 금액인지 검증
     public boolean isValidPurchaseAmount(String input) {
         try {
@@ -32,4 +40,47 @@ public class Verifier {
         }
     }
 
+    /**
+     * 0. 쉼표(,)를 통해 분리된 값이 정수여야 한다.
+     * 1. 각 숫자가 1~45 사이의 값이어야 한다.
+     * 2. 각 숫자가 중복되지 않는 값이어야 한다.
+     */
+    public boolean isValidWinningNumbers(String inputData) {
+        try {
+            validateLottoNumbers(inputData);
+            validateLottoSize();
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+    public void validateLottoNumbers(String inputData) {
+        String[] splitData = inputData.split(",");
+        lottoNumbers.clear();
+        for (String s : splitData) {
+            int num = integerConversion(s); // 정수 검사
+            lottoNumberRangeCheck(num); // 범위 검사
+            lottoNumberDuplicateCheck(num); // 중복 검사
+            lottoNumbers.add(num);
+        }
+    }
+
+    public void lottoNumberDuplicateCheck(int num) {
+        if (lottoNumbers.contains(num)) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복 값을 입력할 수 없습니다.");
+        }
+    }
+
+    public void validateLottoSize() {
+        if (lottoNumbers.size() < LOTTO_SIZE) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        }
+    }
+
+    public void lottoNumberRangeCheck(int num) {
+        if (num < START_INCLUSIVE || num > END_INCLUSIVE) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 값 이어야 합니다.");
+        }
+    }
 }
