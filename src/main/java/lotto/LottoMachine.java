@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -22,16 +23,16 @@ public class LottoMachine {
     public void run() {
         buyLotto();
         printLottoNumbers();
-        getWinningNumbers();
+        winningNumbers = getInputWinningNumbers();
     }
 
-    public void getWinningNumbers() {
+    public ArrayList<Integer> getInputWinningNumbers() {
         String inputData;
         do {
             System.out.println("당첨 번호를 입력해 주세요.");
             inputData = Console.readLine();
         } while (!verifier.isValidWinningNumbers(inputData));
-        winningNumbers = new ArrayList<>(verifier.getLottoNumbers());
+        return new ArrayList<>(verifier.getLottoNumbers());
     }
 
     public void buyLotto() {
