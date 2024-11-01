@@ -1,11 +1,30 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LotteMachine {
-
+    private static final Integer START_INCLUSIVE = 1;
+    private static final Integer END_INCLUSIVE = 45;
+    private static final Integer LOTTO_SIZE = 6;
+    private ArrayList<Lotto> purchasedLottoTickets = new ArrayList<>();
     public void run() {
+        buyLotto();
+    }
+
+    public void buyLotto() {
         int purchaseAmount = getPurchaseAmount();
+        int purchaseQuantity = getPurchaseQuantity(purchaseAmount);
+        // 로또 구입
+        for (int i = 0; i < purchaseQuantity; i++) {
+            purchasedLottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_SIZE)));
+        }
+    }
+
+    public int getPurchaseQuantity(int purchaseAmount) {
+        return purchaseAmount / 1000;
     }
 
     public int getPurchaseAmount() {
