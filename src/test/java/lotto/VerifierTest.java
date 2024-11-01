@@ -50,4 +50,11 @@ class VerifierTest {
         assertThatThrownBy(() -> verifier.validateLottoNumbers("0,2,45"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 문자열에서_추출된_당첨번호에_중복된_숫자가_있다면_예외가_발생한다() {
+        Verifier verifier = new Verifier();
+        assertThatThrownBy(() -> verifier.validateLottoNumbers("1,1,1"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
