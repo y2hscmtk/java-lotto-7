@@ -17,12 +17,11 @@ class VerifierTest {
 
     @Test
     void 로또_구매_금액이_1000원_단위의_양수가_아니면_예외가_발생한다() {
-        assertThatThrownBy(()-> new Verifier().validatePurchaseAmount(0))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(()-> new Verifier().validatePurchaseAmount(-1))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(()-> new Verifier().validatePurchaseAmount(1001))
-                .isInstanceOf(IllegalArgumentException.class);
+        List<Integer> checkNumbers = Arrays.asList(-1,0,1001);
+        for (Integer checkNumber : checkNumbers) {
+            assertThatThrownBy(()-> new Verifier().lottoNumberRangeCheck(checkNumber))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Test
