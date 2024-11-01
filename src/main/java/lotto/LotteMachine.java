@@ -9,16 +9,30 @@ public class LotteMachine {
     }
 
     public int getPurchaseAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
-        int purchaseAmount = integerConversion(Console.readLine());
-        validatePurchaseAmount(purchaseAmount);
-        return purchaseAmount;
+        String input;
+        do {
+            System.out.println("구입금액을 입력해 주세요.");
+            input = Console.readLine();
+        } while (!isValidPurchaseAmount(input)); // 올바른 값을 입력받을 때 까지 반복
+        return Integer.parseInt(input);
+    }
+
+    // 입력값이 올바른 구매 금액인지 검증
+    public boolean isValidPurchaseAmount(String input) {
+        try {
+            int amount = integerConversion(input);
+            validatePurchaseAmount(amount);
+            return true;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     public Integer integerConversion(String inputData) {
         try {
             return Integer.parseInt(inputData);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 올바르지 않은 값 입니다. 정수를 입력 해주세요.");
         }
     }
