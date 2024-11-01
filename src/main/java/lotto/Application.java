@@ -2,7 +2,7 @@ package lotto;
 
 public class Application {
     public static void main(String[] args) {
-        LotteMachine app = new LotteMachine();
+        LottoMachine app = new LottoMachine();
         app.run();
     }
 }

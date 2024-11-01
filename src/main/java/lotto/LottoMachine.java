@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * 3. 당첨번호 & 보너스 번호 입력받기
  * 4. 당첨 통계 계산(별도 클래스) 결과 출력
  */
-public class LotteMachine {
+public class LottoMachine {
     public static final Integer START_INCLUSIVE = 1;
     public static final Integer END_INCLUSIVE = 45;
     public static final Integer LOTTO_SIZE = 6;
