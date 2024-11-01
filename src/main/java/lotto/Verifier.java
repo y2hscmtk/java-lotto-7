@@ -21,6 +21,21 @@ public class Verifier {
         }
     }
 
+    // 0. 정수인지 확인
+    // 1. 지정된 범위안의 숫자인지 확인
+    // 2. 기존 로또 번호에 중복되는 값인지 확인
+    public boolean isValidPlusNumber(String input) {
+        try {
+            int number = integerConversion(input);
+            lottoNumberRangeCheck(number);
+            lottoNumberDuplicateCheck(number);
+            return true;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
     public Integer integerConversion(String inputData) {
         try {
             return Integer.parseInt(inputData);

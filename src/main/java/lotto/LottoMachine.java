@@ -18,11 +18,26 @@ public class LottoMachine {
     private final Verifier verifier = new Verifier();
     private final ArrayList<Lotto> purchasedLottoTickets = new ArrayList<>();
     private ArrayList<Integer> winningNumbers = new ArrayList<>();
+    private int plusNumber;
 
     public void run() {
         buyLotto();
         printLottoNumbers();
+        makeWinningLottoInfo();
+    }
+
+    public void makeWinningLottoInfo() {
         winningNumbers = getInputWinningNumbers();
+        plusNumber = getInputPlusNumber();
+    }
+
+    public int getInputPlusNumber() {
+        String inputData;
+        do {
+            System.out.println("보너스 번호를 입력해 주세요.");
+            inputData = Console.readLine();
+        } while (!verifier.isValidPlusNumber(inputData));
+        return Integer.parseInt(inputData);
     }
 
     public ArrayList<Integer> getInputWinningNumbers() {
