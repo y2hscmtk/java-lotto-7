@@ -35,7 +35,7 @@ public class LottoMachine {
     }
 
     public void buyLotto() {
-        int purchaseAmount = getPurchaseAmount();
+        int purchaseAmount = getInputPurchaseAmount();
         int purchaseQuantity = amountToQuantity(purchaseAmount);
         // 로또 구입
         for (int i = 0; i < purchaseQuantity; i++) {
@@ -56,7 +56,7 @@ public class LottoMachine {
         return purchaseAmount / 1000;
     }
 
-    public int getPurchaseAmount() {
+    public int getInputPurchaseAmount() {
         String input;
         do {
             System.out.println("구입금액을 입력해 주세요.");
