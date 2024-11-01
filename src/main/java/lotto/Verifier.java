@@ -73,7 +73,7 @@ public class Verifier {
     }
 
     public void validateLottoSize() {
-        if (lottoNumbers.size() < LOTTO_SIZE) {
+        if (lottoNumbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
     }
@@ -82,5 +82,9 @@ public class Verifier {
         if (num < START_INCLUSIVE || num > END_INCLUSIVE) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 값 이어야 합니다.");
         }
+    }
+
+    public Set<Integer> getLottoNumbers() {
+        return lottoNumbers;
     }
 }

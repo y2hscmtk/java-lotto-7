@@ -57,4 +57,15 @@ class VerifierTest {
         assertThatThrownBy(() -> verifier.validateLottoNumbers("1,1,1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 문자열에서_추출된_당첨번호가_총_6개가_아니라면_예외가_발생한다() {
+        Verifier verifier = new Verifier();
+        verifier.validateLottoNumbers("1,2,3,4,5");
+        assertThatThrownBy(verifier::validateLottoSize)
+                .isInstanceOf(IllegalArgumentException.class);
+        verifier.validateLottoNumbers("1,2,3,4,5,6,7");
+        assertThatThrownBy(verifier::validateLottoSize)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
