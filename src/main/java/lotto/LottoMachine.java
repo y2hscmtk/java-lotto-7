@@ -24,6 +24,9 @@ public class LottoMachine {
         buyLotto();
         printLottoNumbers();
         makeWinningLottoInfo();
+
+        System.out.println("보너스 번호 : " + plusNumber);
+        System.out.println("당첨 번호 : " + winningNumbers);
     }
 
     public void makeWinningLottoInfo() {
@@ -32,6 +35,7 @@ public class LottoMachine {
     }
 
     public int getInputPlusNumber() {
+        System.out.println();
         String inputData;
         do {
             System.out.println("보너스 번호를 입력해 주세요.");
@@ -41,6 +45,7 @@ public class LottoMachine {
     }
 
     public ArrayList<Integer> getInputWinningNumbers() {
+        System.out.println();
         String inputData;
         do {
             System.out.println("당첨 번호를 입력해 주세요.");
