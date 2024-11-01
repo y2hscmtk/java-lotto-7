@@ -15,18 +15,23 @@ public class LottoMachine {
     public static final Integer START_INCLUSIVE = 1;
     public static final Integer END_INCLUSIVE = 45;
     public static final Integer LOTTO_SIZE = 6;
-    private final ArrayList<Lotto> purchasedLottoTickets = new ArrayList<>();
     private final Verifier verifier = new Verifier();
+    private final ArrayList<Lotto> purchasedLottoTickets = new ArrayList<>();
+    private ArrayList<Integer> winningNumbers = new ArrayList<>();
+
     public void run() {
         buyLotto();
         printLottoNumbers();
+        getWinningNumbers();
     }
 
     public void getWinningNumbers() {
         String inputData;
         do {
+            System.out.println("당첨 번호를 입력해 주세요.");
             inputData = Console.readLine();
         } while (!verifier.isValidWinningNumbers(inputData));
+        winningNumbers = new ArrayList<>(verifier.getLottoNumbers());
     }
 
     public void buyLotto() {
