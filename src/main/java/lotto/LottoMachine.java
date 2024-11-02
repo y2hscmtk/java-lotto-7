@@ -72,7 +72,6 @@ public class LottoMachine {
         for (Lotto lotto : purchasedLottoTickets) {
             lotto.printLottoNumbers();
         }
-        System.out.println();
     }
 
     public int amountToQuantity(int purchaseAmount) {
