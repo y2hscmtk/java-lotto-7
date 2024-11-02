@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,10 +25,11 @@ public class Lotto {
         }
     }
 
-    // 오름차순 정렬 후 출력
     public void printLottoNumbers() {
-        Collections.sort(numbers);
-        System.out.println(numbers);
+        // 원본 배열의 상태는 변경되지 않음(immutable) -> 원본 배열 ArrayList로 복사 후 정렬 및 출력
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        System.out.println(sortedNumbers);
     }
 
     public List<Integer> getNumbers() {
