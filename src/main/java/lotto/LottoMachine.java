@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -16,17 +17,18 @@ public class LottoMachine {
     public static final Integer END_INCLUSIVE = 45;
     public static final Integer LOTTO_SIZE = 6;
     private final Verifier verifier = new Verifier();
+    private LotteryDevice lotteryDevice;
     private final ArrayList<Lotto> purchasedLottoTickets = new ArrayList<>();
     private ArrayList<Integer> winningNumbers = new ArrayList<>();
     private int plusNumber;
+
 
     public void run() {
         buyLotto();
         printLottoNumbers();
         makeWinningLottoInfo();
-
-        System.out.println("보너스 번호 : " + plusNumber);
-        System.out.println("당첨 번호 : " + winningNumbers);
+        lotteryDevice = new LotteryDevice(purchasedLottoTickets, winningNumbers, plusNumber);
+        lotteryDevice.calcPrize();
     }
 
     public void makeWinningLottoInfo() {

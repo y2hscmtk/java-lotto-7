@@ -16,4 +16,13 @@ public enum LottoPrize {
         this.bonusMatch = bonusMatch;
         this.prize = prize;
     }
+
+    public int getMatchingCount() {
+        return matchingCount;
+    }
+
+    public boolean isBonusMatch() {
+        return bonusMatch;
+    }
+
 }
