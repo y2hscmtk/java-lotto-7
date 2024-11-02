@@ -21,6 +21,11 @@ public class LotteryDevice {
         this.plusNumber = plusNumber;
     }
 
+    public void run() {
+        calcPrize();
+        printStatistics();
+    }
+
     public void printStatistics() {
         int[] prizeCounts = new int[LottoPrize.values().length];
         int totalPrizeAmount = 0;

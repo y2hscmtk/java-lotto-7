@@ -28,8 +28,7 @@ public class LottoMachine {
         printLottoNumbers();
         makeWinningLottoInfo();
         lotteryDevice = new LotteryDevice(purchasedLottoTickets, winningNumbers, plusNumber);
-        lotteryDevice.calcPrize();
-        lotteryDevice.printStatistics();
+        lotteryDevice.run(); // 상품 집계 및 통계 결과 출력
     }
 
     public void makeWinningLottoInfo() {
