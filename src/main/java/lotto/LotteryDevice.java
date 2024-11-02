@@ -21,6 +21,21 @@ public class LotteryDevice {
         this.plusNumber = plusNumber;
     }
 
+    public void printStatistics() {
+        int[] prizeCounts = new int[LottoPrize.values().length];
+        int totalPrizeAmount = 0;
+        int purchaseAmount = purchasedLottoTickets.size() * 1000; // 로또 구매 금액
+        for (LottoPrize prize : prizes) {
+            prizeCounts[prize.ordinal()]++;
+            totalPrizeAmount += prize.getPrize();
+        }
+        System.out.println("\n당첨 통계\n---");
+        for (LottoPrize prize : LottoPrize.values()) {
+            int count = prizeCounts[prize.ordinal()];
+            prize.printPrizeResult(count);
+        }
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", (double) totalPrizeAmount / purchaseAmount * 100);
+    }
 
     public void calcPrize() {
         for (Lotto lotto : purchasedLottoTickets) {
